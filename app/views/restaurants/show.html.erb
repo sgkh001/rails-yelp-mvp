@@ -5,5 +5,19 @@
 <p>PHONE NUMBER: <%= @restaurant.phone_number %></p>
 <p>CATEGORY: <%= @restaurant.category %></p>
 <hr>
+<h1> Add a review</h1>
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+    <%= f.input :content %>
+    <%= f.input :rating, collection: 0..5 %>
+    <%= f.submit "submit review", class: "btn btn-primary" %>
+  <% end %>
+<hr>
+<h1> Reviews </h1>
+<% @restaurant.reviews.each do |review| %>
+  <p> comment : <%= review.content %></p>
+  <p> rating: <%= review.rating %> </p>
+<hr>
+<% end %>
 <%= link_to "<--BACK TO HOMEPAGE", restaurants_path  %>
+<hr>
 </div>
